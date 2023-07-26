@@ -6,10 +6,17 @@ on:
         required: true
 jobs:  
   testvariables:
-        
-- uses: actions/checkout@v3
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
       - name: Create commit_id & version environment variables
         run: |
           commitId = $(git branch --show-current)
           echo "commitId=$commitId" >> $GITHUB_ENV
           echo "version=${{ github.ref_name }}" >>  $GITHUB_ENV
+      - name: Print variables
+        run: |
+            echo "$commitId"
+            echo "$version"
+            echo "${{ $commitId}}"
+            echo "${{ version}}"
