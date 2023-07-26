@@ -16,5 +16,4 @@ jobs:
           echo "version=${{ github.ref_name }}" >>  $GITHUB_ENV
       - name: Print variables
         run: |
-          echo "${{ commitId }}"
-          echo "${{ version }}"
+          echo "${{ GITHUB_ENV }}"
