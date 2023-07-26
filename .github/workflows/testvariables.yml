@@ -10,6 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Create commit_id & version environment variables
+        working-directory: .
         run: |
           commitId = $(git branch --show-current)
           echo "commitId=$commitId" >> $GITHUB_ENV
