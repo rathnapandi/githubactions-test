@@ -1,0 +1,15 @@
+on:
+  workflow_dispatch:
+    inputs:
+      releaseVersion:
+        description: "Provide git tag version like 1.13.5"
+        required: true
+jobs:  
+  testvariables:
+        
+- uses: actions/checkout@v3
+      - name: Create commit_id & version environment variables
+        run: |
+          commitId = $(git branch --show-current)
+          echo "commitId=$commitId" >> $GITHUB_ENV
+          echo "version=${{ github.ref_name }}" >>  $GITHUB_ENV
