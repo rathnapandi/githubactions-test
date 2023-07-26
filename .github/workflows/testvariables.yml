@@ -14,7 +14,8 @@ jobs:
         run: |
           commitId=$(git rev-parse --short HEAD)
           echo "commitId=$commitId" >> $GITHUB_ENV
+          echo "version=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       - name: Print variables
         run: |
           echo "${{ env.commitId }}"
-          echo "${{ steps.meta.outputs.tags }}"
+          echo "${{ env.version }}"
